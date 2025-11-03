@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión - Área Tecnológica</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="index2.css">
+</head>
+<body>
+   
+    <div id="app">
+        <!-- Sistema principal -->
+        <div id="mainSystem">
+            <!-- Encabezado -->
+            <header>
+                <div class="container">
+                    <div class="header-content">
+                        <div class="logo">
+                            <h1>Sistema de Gestión</h1>
+                            <p>Centro de Servicio Técnico "Área Tecnológica"</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Navegación -->
+            <nav>
+                <div class="container">
+                    <ul class="nav-tabs">
+                        <li class="nav-tab active" data-tab="clients">
+                            <i class="fas fa-user-friends"></i> Clientes
+                        </li>
+                        <li class="nav-tab" data-tab="purchases">
+                            <i class="fas fa-shopping-cart"></i> Compras
+                        </li>
+                        <li class="nav-tab" data-tab="inventory">
+                            <i class="fas fa-boxes"></i> Inventario
+                        </li>
+                        <li class="nav-tab" data-tab="backup">
+                            <i class="fas fa-shield-alt"></i> Respaldo
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+          
+            <main class="main-content">
+                <div class="container">
+                    <!-- Módulo de Clientes -->
+                    <div id="clients" class="tab-content active">
+                        <div class="module-header">
+                            <h2 class="module-title">Gestión de Clientes</h2>
+                            <div class="module-actions">
+                                <button class="btn btn-primary" id="newClientBtn">
+                                    <i class="fas fa-plus"></i> Nuevo Cliente
+                                </button>
+                            </div>
+                        </div>
+                       
+                        <div class="search-box">
+                            <input type="text" id="clientSearch" placeholder="Buscar cliente...">
+                            <button id="searchClientBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                       
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Teléfono</th>
+                                        <th>Email</th>
+                                        <th>Dirección</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="clientsTable">
+                                    <!-- Los datos se cargarán dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Módulo de Compras -->
+                    <div id="purchases" class="tab-content">
+                        <div class="module-header">
+                            <h2 class="module-title">Gestión de Compras</h2>
+                            <div class="module-actions">
+                                <button class="btn btn-primary" id="newPurchaseBtn">
+                                    <i class="fas fa-plus"></i> Nueva Compra
+                                </button>
+                            </div>
+                        </div>
+                       
+                        <div class="search-box">
+                            <input type="text" id="purchaseSearch" placeholder="Buscar compra...">
+                            <button id="searchPurchaseBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                       
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Proveedor</th>
+                                        <th>Fecha</th>
+                                        <th>Total</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="purchasesTable">
+                                    <!-- Los datos se cargarán dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Módulo de Inventario -->
+                    <div id="inventory" class="tab-content">
+                        <div class="module-header">
+                            <h2 class="module-title">Gestión de Inventario</h2>
+                            <div class="module-actions">
+                                <button class="btn btn-primary" id="newProductBtn">
+                                    <i class="fas fa-plus"></i> Nuevo Producto
+                                </button>
+                                <button class="btn btn-warning" id="lowStockBtn">
+                                    <i class="fas fa-exclamation-triangle"></i> Stock Bajo
+                                </button>
+                            </div>
+                        </div>
+                       
+                        <div class="search-box">
+                            <input type="text" id="productSearch" placeholder="Buscar producto...">
+                            <button id="searchProductBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                       
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Producto</th>
+                                        <th>Categoría</th>
+                                        <th>Precio</th>
+                                        <th>Stock</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="inventoryTable">
+                                    <!-- Los datos se cargarán dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Módulo de Respaldo -->
+                    <div id="backup" class="tab-content">
+                        <div class="module-header">
+                            <h2 class="module-title">Respaldo y Seguridad</h2>
+                            <div class="module-actions">
+                                <button class="btn btn-primary" id="backupNowBtn">
+                                    <i class="fas fa-save"></i> Respaldo Ahora
+                                </button>
+                                <button class="btn btn-secondary" id="scheduleBackupBtn">
+                                    <i class="fas fa-clock"></i> Programar
+                                </button>
+                            </div>
+                        </div>
+                       
+                        <div class="backup-status success">
+                            <i class="fas fa-check-circle"></i> Último respaldo completado: 2025-08-12 10:30:15
+                        </div>
+                       
+                        <div class="module-header">
+                            <h3>Historial de Respaldos</h3>
+                        </div>
+                       
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Tamaño</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="backupTable">
+                                    <tr>
+                                        <td>2025-08-12</td>
+                                        <td>10:30:15</td>
+                                        <td>24.5 MB</td>
+                                        <td>Completado</td>
+                                        <td>
+                                            <button class="btn btn-success btn-sm">Descargar</button>
+                                            <button class="btn btn-danger btn-sm">Eliminar</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2025-08-05</td>
+                                        <td>10:25:42</td>
+                                        <td>23.8 MB</td>
+                                        <td>Completado</td>
+                                        <td>
+                                            <button class="btn btn-success btn-sm">Descargar</button>
+                                            <button class="btn btn-danger btn-sm">Eliminar</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                       
+                        <div class="module-header">
+                            <h3>Configuración de Seguridad</h3>
+                        </div>
+                       
+                        <div class="form-group">
+                            <label>Frecuencia de respaldo automático</label>
+                            <select class="form-control" id="backupFrequency">
+                                <option value="daily">Diario</option>
+                                <option value="weekly" selected>Semanal</option>
+                                <option value="biweekly">Quincenal</option>
+                                <option value="monthly">Mensual</option>
+                            </select>
+                        </div>
+                       
+                        <div class="form-group">
+                            <label>Retención de respaldos (días)</label>
+                            <input type="number" class="form-control" id="backupRetention" value="90">
+                        </div>
+                       
+                        <div class="form-group">
+                            <label>Notificar por correo</label>
+                            <select class="form-control" id="backupNotify">
+                                <option value="1" selected>Sí</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                       
+                        <button class="btn btn-primary" id="saveBackupConfig">Guardar Configuración</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal para clientes -->
+    <div id="clientModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="clientModalTitle">Nuevo Cliente</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="clientForm">
+                <input type="hidden" id="clientId">
+                <div class="form-group">
+                    <label for="clientName">Nombre Completo</label>
+                    <input type="text" id="clientName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="clientPhone">Teléfono</label>
+                    <input type="text" id="clientPhone" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="clientEmail">Email</label>
+                    <input type="email" id="clientEmail" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="clientAddress">Dirección</label>
+                    <input type="text" id="clientAddress" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="purchaseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="purchaseModalTitle">Nueva Compra</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="purchaseForm">
+                <input type="hidden" id="purchaseId">
+                <div class="form-group">
+                    <label for="purchaseProvider">Proveedor</label>
+                    <input type="text" id="purchaseProvider" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="purchaseDate">Fecha</label>
+                    <input type="date" id="purchaseDate" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="purchaseTotal">Total</label>
+                    <input type="number" id="purchaseTotal" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="purchaseStatus">Estado</label>
+                    <select id="purchaseStatus" class="form-control">
+                        <option value="pending">Pendiente</option>
+                        <option value="completed">Completada</option>
+                        <option value="cancelled">Cancelada</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="productModalTitle">Nuevo Producto</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="productForm">
+                <input type="hidden" id="productId">
+                <div class="form-group">
+                    <label for="productName">Nombre del Producto</label>
+                    <input type="text" id="productName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="productCategory">Categoría</label>
+                    <select id="productCategory" class="form-control">
+                        <option value="accesorio">Accesorio</option>
+                        <option value="repuesto">Repuesto</option>
+                        <option value="herramienta">Herramienta</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Precio</label>
+                    <input type="number" id="productPrice" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="productStock">Stock Inicial</label>
+                    <input type="number" id="productStock" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="productMinStock">Stock Mínimo</label>
+                    <input type="number" id="productMinStock" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="notification" class="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Operación realizada con éxito</span>
+    </div>
+
+    <script src="index2.js"></script>
+</body>
+</html>
