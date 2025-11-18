@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="register.css">
+       
+   
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-info">
+            <h2 class="mb-4">¡Únete a Nosotros!</h2>
+            <p class="mb-4">Crea tu cuenta para acceder a todas nuestras funcionalidades y servicios exclusivos.</p>
+            
+        </div>
+        
+        <div class="register-form">
+            <h2 class="form-title">Crear Cuenta</h2>
+            <form id="registerForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="name" placeholder="Nombre Completo" required>
+                  </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="document" placeholder="Documento de Identidad" required>
+                    </div>
+                </div>
+                
+                <input type="email" class="form-control" id="email" placeholder="Correo Electrónico" required>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="form-control" id="userType" required>
+                            <option value="" disabled selected>Tipo de Usuario</option>
+                            <option value="admin">Administrador</option>
+                            <option value="tech">Técnico</option>
+                            <option value="client">Cliente</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-register">Registrarse</button>
+            </form>
+            
+            <div class="login-link">
+                ¿Ya tienes una cuenta? <a href="login.html">Inicia sesión aquí</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mensaje de éxito -->
+    <div class="success-message" id="successMessage">
+        <div class="success-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 class="success-title">¡Felicidades!</h3>
+            <p class="success-text">Tu cuenta ha sido creada exitosamente. Serás redirigido en breve.</p>
+            <button class="btn btn-continue" id="continueBtn">Continuar</button>
+        </div>
+    </div>
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="register.js"> 
+        
+    </script>
+</body>
+</html>

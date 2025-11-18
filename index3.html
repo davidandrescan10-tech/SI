@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Gestión de Compras - Sistema de Gestión</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <link rel="stylesheet" href="index3.css"/>
+</head>
+<body>
+    <div id="app">
+        <div id="mainSystem">
+            <header>
+                <div class="container">
+                    <div class="header-content">
+                        <div class="logo">
+                            <h1>Área Tecnológica</h1>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <nav>
+                <div class="container">
+                    <ul class="nav-tabs">
+                        <li class="nav-tab active" data-tab="purchases">
+                            <i class="fas fa-shopping-cart"></i> Compras
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="main-content">
+                <div class="container">
+                    <!-- Módulo de Compras -->
+                    <div id="purchases" class="tab-content active">
+                        <div class="module-header">
+                            <h2 class="module-title">Gestión de Compras</h2>
+                            <div class="module-actions">
+                                <button class="btn btn-primary" id="newPurchaseBtn">
+                                    <i class="fas fa-plus"></i> Nueva Compra
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="search-box">
+                            <input type="text" id="purchaseSearch" placeholder="Buscar compra..." />
+                            <button id="searchPurchaseBtn"><i class="fas fa-search"></i></button>
+                        </div>
+
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Proveedor</th>
+                                        <th>Fecha</th>
+                                        <th>Total</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="purchasesTable">
+                                    <!-- Los datos se cargarán dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="purchaseModal" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="purchaseModalTitle">
+            <div class="modal-header">
+                <h3 class="modal-title" id="purchaseModalTitle">Nueva Compra</h3>
+                <button class="close" aria-label="Cerrar">&times;</button>
+            </div>
+            <form id="purchaseForm">
+                <input type="hidden" id="purchaseId" />
+                <div class="form-group">
+                    <label for="purchaseProvider">Proveedor</label>
+                    <input type="text" id="purchaseProvider" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="purchaseDate">Fecha</label>
+                    <input type="date" id="purchaseDate" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label for="purchaseTotal">Total</label>
+                    <input type="number" id="purchaseTotal" class="form-control" step="0.01" required />
+                </div>
+                <div class="form-group">
+                    <label for="purchaseStatus">Estado</label>
+                    <select id="purchaseStatus" class="form-control">
+                        <option value="pending">Pendiente</option>
+                        <option value="completed">Completada</option>
+                        <option value="cancelled">Cancelada</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="button" class="btn btn-secondary close">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="notification" class="notification" aria-live="polite" style="display:none;">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Operación realizada con éxito</span>
+    </div>
+
+    <script src="index3.js">
+    
+    </script>
+</body>
+</html>
